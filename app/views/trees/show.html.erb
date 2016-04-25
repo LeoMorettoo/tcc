@@ -1,0 +1,29 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>User:</strong>
+  <%= @tree.user %>
+</p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @tree.name %>
+</p>
+
+<p>
+  <strong>Instances numbers:</strong>
+  <%= @tree.leaf_number %>
+</p>
+
+<p>
+  <strong>Variable numbers:</strong>
+  <%= @tree.variable_numbers %>
+</p>
+
+<p>
+  <strong>Tree size:</strong>
+  <%= @tree.tree_size %>
+</p>
+
+<%= link_to 'Edit', edit_tree_path(@tree) %> |
+<%= link_to 'Back', trees_path %>

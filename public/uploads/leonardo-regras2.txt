@@ -1,0 +1,159 @@
+=== Run information ===
+
+Scheme:weka.classifiers.trees.J48 -C 0.25 -B -M 2
+Relation:     Censo_consolidado_sucesso_2-weka.filters.unsupervised.attribute.Remove-R1-3,7-10,15-weka.filters.unsupervised.attribute.NumericToNominal-R3,10-12_clustered-weka.filters.unsupervised.attribute.Remove-R1-weka.filters.unsupervised.attribute.Standardize-weka.filters.unsupervised.attribute.Remove-R13_clustered-weka.filters.unsupervised.attribute.Remove-R1,4-weka.filters.unsupervised.attribute.Remove-R4
+Instances:    21078
+Attributes:   11
+              Solo
+              variedade
+              estagio de corte
+              tipo de corte
+              condicao de corte
+              FormulaAdubo
+              Adubacao
+              Ambiente
+              Fertilidade
+              Textura
+              Cluster
+Test mode:split 66.0% train, remainder test
+
+=== Classifier model (full training set) ===
+
+J48 pruned tree
+------------------
+
+Ambiente = 1
+|   Textura = 1: cluster0 (6713.32/0.32)
+|   Textura != 1
+|   |   estagio de corte = 4.18
+|   |   |   variedade = SP91-1049: cluster1 (2.0)
+|   |   |   variedade != SP91-1049
+|   |   |   |   Adubacao <= -0.037352
+|   |   |   |   |   variedade = RB855156: cluster0 (30.0/3.0)
+|   |   |   |   |   variedade != RB855156: cluster1 (4.0/0.0)
+|   |   |   |   Adubacao > -0.037352: cluster0 (103.0/2.0)
+|   |   estagio de corte != 4.18: cluster0 (950.05/0.05)
+Ambiente != 1
+|   Ambiente = 2
+|   |   variedade = SP83-2847
+|   |   |   Solo = LR.2: cluster2 (175.0)
+|   |   |   Solo != LR.2
+|   |   |   |   estagio de corte = 4.18: cluster1 (44.0)
+|   |   |   |   estagio de corte != 4.18
+|   |   |   |   |   estagio de corte = 1.18: cluster1 (26.0)
+|   |   |   |   |   estagio de corte != 1.18: cluster2 (98.0/1.0)
+|   |   variedade != SP83-2847
+|   |   |   estagio de corte = 4.18
+|   |   |   |   Textura = 1: cluster2 (883.04)
+|   |   |   |   Textura != 1
+|   |   |   |   |   Adubacao <= -0.223457
+|   |   |   |   |   |   variedade = SP91-1049: cluster2 (8.0)
+|   |   |   |   |   |   variedade != SP91-1049
+|   |   |   |   |   |   |   variedade = SP89-1115
+|   |   |   |   |   |   |   |   Adubacao <= -0.385785: cluster1 (2.0)
+|   |   |   |   |   |   |   |   Adubacao > -0.385785
+|   |   |   |   |   |   |   |   |   Adubacao <= -0.314954: cluster2 (9.0)
+|   |   |   |   |   |   |   |   |   Adubacao > -0.314954: cluster1 (2.0)
+|   |   |   |   |   |   |   variedade != SP89-1115
+|   |   |   |   |   |   |   |   variedade = SP87-365
+|   |   |   |   |   |   |   |   |   Adubacao <= -0.255956: cluster1 (21.0)
+|   |   |   |   |   |   |   |   |   Adubacao > -0.255956: cluster2 (4.0)
+|   |   |   |   |   |   |   |   variedade != SP87-365: cluster1 (43.0/0.0)
+|   |   |   |   |   Adubacao > -0.223457
+|   |   |   |   |   |   variedade = SP81-3250
+|   |   |   |   |   |   |   Adubacao <= 0.593683: cluster2 (3.01)
+|   |   |   |   |   |   |   Adubacao > 0.593683: cluster1 (2.0/0.0)
+|   |   |   |   |   |   variedade != SP81-3250: cluster2 (175.0/2.0)
+|   |   |   estagio de corte != 4.18: cluster2 (6550.32)
+|   Ambiente != 2
+|   |   Textura = 1
+|   |   |   Adubacao <= -0.072795
+|   |   |   |   variedade = SP89-1115: cluster0 (21.0)
+|   |   |   |   variedade != SP89-1115
+|   |   |   |   |   estagio de corte = 4.18: cluster1 (20.0/1.0)
+|   |   |   |   |   estagio de corte != 4.18
+|   |   |   |   |   |   variedade = SP83-2847
+|   |   |   |   |   |   |   estagio de corte = 3.18: cluster2 (5.0)
+|   |   |   |   |   |   |   estagio de corte != 3.18: cluster1 (6.0)
+|   |   |   |   |   |   variedade != SP83-2847: cluster2 (315.02/1.0)
+|   |   |   Adubacao > -0.072795
+|   |   |   |   variedade = SP91-1049: cluster2 (11.0)
+|   |   |   |   variedade != SP91-1049
+|   |   |   |   |   FormulaAdubo =  Adubo 32-00-02 Nit.Amonia 
+|   |   |   |   |   |   Adubacao <= -0.007853: cluster1 (13.0/0.0)
+|   |   |   |   |   |   Adubacao > -0.007853
+|   |   |   |   |   |   |   variedade = SP90-3414: cluster2 (3.0)
+|   |   |   |   |   |   |   variedade != SP90-3414
+|   |   |   |   |   |   |   |   Adubacao <= 0.159586: cluster2 (10.0/1.0)
+|   |   |   |   |   |   |   |   Adubacao > 0.159586: cluster0 (9.0/0.0)
+|   |   |   |   |   FormulaAdubo !=  Adubo 32-00-02 Nit.Amonia 
+|   |   |   |   |   |   variedade = SP83-2847
+|   |   |   |   |   |   |   estagio de corte = 4.18: cluster1 (9.0)
+|   |   |   |   |   |   |   estagio de corte != 4.18: cluster0 (7.0)
+|   |   |   |   |   |   variedade != SP83-2847
+|   |   |   |   |   |   |   estagio de corte = 8.0
+|   |   |   |   |   |   |   |   variedade = SP80-1816
+|   |   |   |   |   |   |   |   |   tipo de corte = MA: cluster0 (5.0/1.0)
+|   |   |   |   |   |   |   |   |   tipo de corte != MA: cluster2 (8.0)
+|   |   |   |   |   |   |   |   variedade != SP80-1816: cluster0 (8.0/0.0)
+|   |   |   |   |   |   |   estagio de corte != 8.0: cluster0 (337.02/2.02)
+|   |   Textura != 1
+|   |   |   variedade = SP91-1049
+|   |   |   |   Ambiente = 3
+|   |   |   |   |   estagio de corte = 3.18: cluster2 (26.0)
+|   |   |   |   |   estagio de corte != 3.18
+|   |   |   |   |   |   Solo = LVE.2A
+|   |   |   |   |   |   |   estagio de corte = 4.18: cluster1 (4.0)
+|   |   |   |   |   |   |   estagio de corte != 4.18: cluster2 (9.0/1.0)
+|   |   |   |   |   |   Solo != LVE.2A: cluster1 (43.0)
+|   |   |   |   Ambiente != 3: cluster1 (100.0)
+|   |   |   variedade != SP91-1049
+|   |   |   |   Textura = 2
+|   |   |   |   |   estagio de corte = 3.18
+|   |   |   |   |   |   Adubacao <= 0.50763: cluster1 (21.0/0.0)
+|   |   |   |   |   |   Adubacao > 0.50763: cluster0 (53.0/0.0)
+|   |   |   |   |   estagio de corte != 3.18
+|   |   |   |   |   |   variedade = SP83-2847: cluster1 (352.0)
+|   |   |   |   |   |   variedade != SP83-2847
+|   |   |   |   |   |   |   Adubacao <= -0.479059: cluster1 (21.01/0.01)
+|   |   |   |   |   |   |   Adubacao > -0.479059: cluster0 (26.01/0.01)
+|   |   |   |   Textura != 2
+|   |   |   |   |   variedade = SP90-3414
+|   |   |   |   |   |   FormulaAdubo =  Adubo 27-00-24 : cluster0 (11.0)
+|   |   |   |   |   |   FormulaAdubo !=  Adubo 27-00-24 : cluster1 (46.0)
+|   |   |   |   |   variedade != SP90-3414: cluster1 (3731.19/9.19)
+
+Number of Leaves  : 	51
+
+Size of the tree : 	101
+
+
+Time taken to build model: 0.2 seconds
+
+=== Evaluation on test split ===
+=== Summary ===
+
+Correctly Classified Instances        7143               99.6651 %
+Incorrectly Classified Instances        24                0.3349 %
+Kappa statistic                          0.9948
+Mean absolute error                      0.0032
+Root mean squared error                  0.0473
+Relative absolute error                  0.751  %
+Root relative squared error             10.1723 %
+Total Number of Instances             7167     
+
+=== Detailed Accuracy By Class ===
+
+               TP Rate   FP Rate   Precision   Recall  F-Measure   ROC Area  Class
+                 0.996     0.002      0.997     0.996     0.997      0.997    cluster0
+                 0.997     0.003      0.991     0.997     0.994      0.998    cluster1
+                 0.997     0          0.999     0.997     0.998      0.999    cluster2
+Weighted Avg.    0.997     0.001      0.997     0.997     0.997      0.998
+
+=== Confusion Matrix ===
+
+    a    b    c   <-- classified as
+ 2816    9    1 |    a = cluster0
+    4 1576    1 |    b = cluster1
+    4    5 2751 |    c = cluster2
+

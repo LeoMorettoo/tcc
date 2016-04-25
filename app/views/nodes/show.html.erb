@@ -1,0 +1,29 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Tree:</strong>
+  <%= @node.tree %>
+</p>
+
+<p>
+  <strong>Variable:</strong>
+  <%= @node.variable %>
+</p>
+
+<p>
+  <strong>Condition:</strong>
+  <%= @node.condition %>
+</p>
+
+<p>
+  <strong>Result:</strong>
+  <%= @node.result %>
+</p>
+
+<p>
+  <strong>Level:</strong>
+  <%= @node.level %>
+</p>
+
+<%= link_to 'Edit', edit_node_path(@node) %> |
+<%= link_to 'Back', nodes_path %>

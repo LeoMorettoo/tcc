@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  tree_id: 
+  variable: MyString
+  condition: MyString
+  result: MyString
+  level: 1
+
+two:
+  tree_id: 
+  variable: MyString
+  condition: MyString
+  result: MyString
+  level: 1
