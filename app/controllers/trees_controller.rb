@@ -32,14 +32,10 @@ class TreesController < ApplicationController
   		if @tree.save  			
 		  	nodes = Node.new
  	 		variaveis = nodes.get_variaveis(@nome_arquivo,@numero_da_linha[:numero_de_variaveis]+1,@numero_da_linha[:test_mode]-1)
- 	 		nodes = nodes.get_arvore(@nome_arquivo,@numero_da_linha[:classifier_model]+5,@numero_da_linha[:numero_de_folhas]-2,variaveis,@tree.id)
- 	 		### para cada elemento no array salvar no banco,
- 	 		### modificar o id do pai para o que vier do banco
- 	 		i= 0 
- 	 		nodes.each { |node| 
- 	 			node.save
- 	 		 }
-
+ 	 		nodes.get_arvore(@nome_arquivo,@numero_da_linha[:classifier_model]+5,@numero_da_linha[:numero_de_folhas]-2,variaveis,@tree.id)
+			### adicionar a migracao que tira o autoincremt da buceta da tabela de nodes
+			### adicionar um numero prefixo que não vá dar problema e resa muleke 
+			i= 0 
   			format.html { redirect_to @tree, notice: 'Tree was successfully created.' }
   			format.json { render :show, status: :created, location: @tree }
   		else
@@ -48,6 +44,7 @@ class TreesController < ApplicationController
   		end
   	end
   end
+
 ##ler o arquivo de upload, salvar as metadatas da arvore.
 ## passar o array gerado e trabalhar nele no biblioteca ancestry e salvar. foda-se
 def upload
