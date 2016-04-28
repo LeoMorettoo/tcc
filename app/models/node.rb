@@ -11,7 +11,8 @@ class Node < ActiveRecord::Base
 		resultado = ''
 		id = 0
 		identity = tree_id.to_s + '0'
-		id_pai = identity + '1' 
+		id_pai = identity + '1'
+		a = 0
 		#ver porque ta indo errado a associacao dos nós 
 		array =  IO.readlines(file)[start_search..end_search]
 		array.each do |line|		
@@ -28,22 +29,18 @@ class Node < ActiveRecord::Base
 				auxiliar_tree = auxiliar_tree.unshift(hash)
 				puts hash
 				node = node.to_obj hash
-			elsif nivel == auxiliar_tree[0][:level]
-				id_pai = auxiliar_tree[0][:id_pai]
-				auxiliar_tree = auxiliar_tree.unshift(hash)
-				puts hash
-				node = node.to_obj hash
-				node.parent_id = id_pai
 			elsif nivel > auxiliar_tree[0][:level]
+				a = 2
 				id_pai = auxiliar_tree[0][:id]
 				auxiliar_tree = auxiliar_tree.unshift(hash)
 				puts hash
 				node = node.to_obj hash
 				node.parent_id = id_pai
 			else
-				id_pai = auxiliar_tree.select {|no| no[:level] == nivel}
+				a =3
+				id_pai = auxiliar_tree.select {|no| no[:level] == nivel-1}
 				id_pai =  id_pai.first
-				id_pai = id_pai[:id_pai]
+				id_pai = id_pai[:id]
 				auxiliar_tree = auxiliar_tree.unshift(hash)
 				puts hash
 				node = node.to_obj hash

@@ -36,7 +36,7 @@ class TreesController < ApplicationController
 			### adicionar a migracao que tira o autoincremt da buceta da tabela de nodes
 			### adicionar um numero prefixo que não vá dar problema e resa muleke 
 			i= 0 
-  			format.html { redirect_to @tree, notice: 'Tree was successfully created.' }
+  			format.html { redirect_to @tree, notice: 'Arquivo Adicionado com sucesso.' }
   			format.json { render :show, status: :created, location: @tree }
   		else
   			format.html { render :new }
@@ -62,7 +62,7 @@ end
   def update
   	respond_to do |format|
   		if @tree.update(tree_params)
-  			format.html { redirect_to @tree, notice: 'Tree was successfully updated.' }
+  			format.html { redirect_to @tree, notice: 'Nome da arvore atualizado com sucesso.' }
   			format.json { render :show, status: :ok, location: @tree }
   		else
   			format.html { render :edit }
@@ -76,7 +76,7 @@ end
   def destroy
   	@tree.destroy
   	respond_to do |format|
-  		format.html { redirect_to trees_url, notice: 'Tree was successfully destroyed.' }
+  		format.html { redirect_to trees_url, notice: 'Arvore deletado com sucesso.' }
   		format.json { head :no_content }
   	end
   end
