@@ -1,6 +1,9 @@
 Rails.application.routes.draw do
-  resources :nodes
-  resources :trees
+
+  root 'trees#index'
+  resources :trees do
+    resources :nodes
+  end
   resources :users
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
@@ -40,7 +43,7 @@ Rails.application.routes.draw do
   #     resources :comments
   #     resources :sales do
   #       get 'recent', on: :collection
-  #     end
+  #     end_search
   #   end
 
   # Example resource route with concerns:

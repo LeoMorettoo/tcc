@@ -26,6 +26,8 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 # create a bundle of methods to help create self-relation structures
 gem 'ancestry'
 
+# bostrap do inferno
+gem 'bootstrap-sass'
 
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
