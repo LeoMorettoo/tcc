@@ -31,8 +31,8 @@ class TreesController < ApplicationController
   	respond_to do |format|
   		if @tree.save  			
 		  	nodes = Node.new
- 	 		variaveis = nodes.get_variaveis(@nome_arquivo,@numero_da_linha[:numero_de_variaveis]+1,@numero_da_linha[:test_mode]-1)
- 	 		nodes.get_arvore(@nome_arquivo,@numero_da_linha[:classifier_model]+5,@numero_da_linha[:numero_de_folhas]-2,variaveis,@tree.id)
+ 	 		variaveis = nodes.extract_variables(@nome_arquivo,@numero_da_linha[:numero_de_variaveis]+1,@numero_da_linha[:test_mode]-1)
+ 	 		nodes.extract_tree(@nome_arquivo,@numero_da_linha[:classifier_model]+5,@numero_da_linha[:numero_de_folhas]-2,variaveis,@tree.id)
 			### adicionar a migracao que tira o autoincremt da buceta da tabela de nodes
 			### adicionar um numero prefixo que não vá dar problema e resa muleke 
 			i= 0 
