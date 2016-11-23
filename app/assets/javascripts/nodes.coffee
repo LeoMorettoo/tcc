@@ -6,16 +6,14 @@ jQuery ->
   $filters.on "change", ->
     variable = $(this).attr('id')
     condition = $(this).val()
-    data_id = if $(this).find(':selected').data('itemid')? then $(this).find(':selected').data('itemid') else false
-    console.log data_id
-    console.log $(this).find(':selected').data('itemid')
+    data_id = if $(this).find(':selected').data('itemid')? then $(this).find(':selected').data('itemid') else 0
     if !condition
       return false
 
     $.ajax '/conditions_sub_trees',
         type: 'POST'
         dataType: 'json'
-        data: {variable:variable, condition:condition, id:data_id}
+        data: {variable:variable, condition:condition, tree_id_conditio:data_id}
         error: (jqXHR, textStatus, errorThrown) ->
             # $('body').append "AJAX Error: #{textStatus}"
             # deu ruim, tratar erro

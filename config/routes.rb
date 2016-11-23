@@ -1,10 +1,11 @@
 Rails.application.routes.draw do
 
   root 'trees#index'
-  resources :trees 
+  resources :trees
   resources :users
-  get '/cenario/:id', to: 'nodes#cenario'
+  get '/cenario/:tree_id', to: 'nodes#cenario'
   post '/conditions_sub_trees', to: 'nodes#conditions_sub_trees'
+  get '/cenario_resultado/:tree_id', to: 'nodes#cenario_resultado'
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

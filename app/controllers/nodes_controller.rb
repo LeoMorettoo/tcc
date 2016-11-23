@@ -8,14 +8,26 @@ class NodesController < ApplicationController
   end
 
   def cenario
+    @id = params['tree_id']
     @nodes = Node.new
-    @nodes = @nodes.get_variables_conditions(params['id'])
+    @nodes = @nodes.get_variables_conditions(params['tree_id'])
     render "index"
+  end
+
+  def cenario_resultado
+    @id = params['tree_id']
+    @results = Array.new
+    nodes = Node.where("tree_id = #{params['tree_id']} AND result <> 'f'")
+    nodes.each { |node|
+      @results << node.result
+    }
+    @results = @results.uniq
+    render "cenario_resultado"
   end
 
   def conditions_sub_trees
     @nodes_sub_tree = Node.new
-    @nodes_sub_tree = @nodes_sub_tree.get_conditions_sub_tree(params['variable'],params['condition'],params['id'])
+    @nodes_sub_tree = @nodes_sub_tree.get_conditions_sub_tree(params['variable'],params['condition'],params['tree_id_condition'])
     respond_to do |format|
         if @nodes_sub_tree
             format.json { render :json => @nodes_sub_tree, :status => 200 }

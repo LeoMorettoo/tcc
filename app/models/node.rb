@@ -21,7 +21,7 @@ class Node < ActiveRecord::Base
 
     def get_conditions_sub_tree(variable,condition,id)
         array_node = Array.new
-        if id
+        if id.to_i == 0
             nodes = self.class.where(variable: variable, condition: condition)
         else
             nodes = self.class.where(id: id)
@@ -55,6 +55,11 @@ class Node < ActiveRecord::Base
             if !no_resultado.nil?
                 resultado = condicao[no_resultado + 1.. - 1]
                 resultado.strip!
+                no_resultado_numero = resultado.index('(')
+                resultado_numero = resultado[no_resultado_numero .. -1]
+                resultado = resultado[0 .. no_resultado_numero -1]
+                resultado.strip!
+                resultado_numero.strip!
                 condicao = condicao[0 .. no_resultado - 1 ]
             end
             condicao.strip!
@@ -67,6 +72,7 @@ class Node < ActiveRecord::Base
                 variable: nome_no.parameterize.underscore ,
                 condition: condicao ,
                 result: resultado,
+                result_numbers: resultado_numero,
                 created_at: Time.now,
                 updated_at:Time.now
             }
