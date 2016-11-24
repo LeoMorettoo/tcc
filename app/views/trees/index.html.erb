@@ -9,7 +9,7 @@
 <table class="table table-hover table-bordered">
   <thead class="thead-inverse">
     <tr>
-      <th>Cod</th>    
+      <th>Cod</th>
       <th>Usuario</th>
       <th>Nome da árvore</th>
       <th>Número de instancias</th>
@@ -28,8 +28,7 @@
         <td><%= tree.leaf_number %></td>
         <td><%= tree.variable_numbers %></td>
         <td><%= tree.tree_size %></td>
-        <td><%= link_to 'Mostrar', tree %></td>
-        <td><%= link_to 'Editar', edit_tree_path(tree) %></td>
+        <td><%= link_to 'Mostrar', :controller => :nodes, :action => :cenario , :tree_id => tree.id %></td>
         <td><%= link_to 'Deletar', tree, method: :delete, data: { confirm: 'Tem certeza? Todas as informaçoes serão perdidas' } %></td>
       </tr>
     <% end %>
