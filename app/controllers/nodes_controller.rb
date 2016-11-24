@@ -35,6 +35,16 @@ class NodesController < ApplicationController
     end
   end
 
+  def path_for_result
+    node = Node.new
+    @path_for_result = node.path_for_result(params['result'])
+    respond_to do |format|
+      if @path_for_result
+          format.json { render :json => @path_for_result, :status => 200 }
+      end
+    end
+  end
+
   # Never trust parameters from the scary internet, only allow the white list through.
   def node_params
     params.require(:node).permit(:tree_id, :variable, :condition, :result, :level)

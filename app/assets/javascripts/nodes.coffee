@@ -1,7 +1,20 @@
 # Place all the behaviors and hooks related to the matching controller here.
 # All this logic will automatically be available in application.js.
 # You can use CoffeeScript in this file: http://coffeescript.org/
-jQuery ->
+ready = ->
+  $('.resultado').on "click",(e) ->
+    e.preventDefault()
+
+    $.ajax '/path_for_result',
+        type: 'POST'
+        dataType: 'json'
+        data: {result: $(this).attr('id')}
+        error: (jqXHR, textStatus, errorThrown) ->
+            # $('body').append "AJAX Error: #{textStatus}"
+            # deu ruim, tratar erro
+        success: (data, textStatus, jqXHR) ->
+
+
   $filters = $(".node-value-selector")
   $filters.on "change", ->
     variable = $(this).attr('id')
@@ -41,3 +54,7 @@ jQuery ->
 
               text = if selects[select].length > 0 then 'Selecione uma' else 'Nenhuma'
               $select.prepend('<option value="">' + text + ' opção</option>')
+
+
+$(document).ready(ready)
+$(document).on('page:load', ready)

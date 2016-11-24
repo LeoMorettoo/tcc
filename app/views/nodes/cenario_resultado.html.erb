@@ -6,22 +6,28 @@
     <li><a href="/cenario/<%= @id %>">Algoritimo 1</a></li>
     <li class="active"><a href="#">algoritimo 2</a></li>
   </ul>
-  <table>
-    <thead>
-      <tr>
-        <th>Variable</th>
-        <th>Condition</th>
-      </tr>
-    </thead>
+  <div class="row">
+    <div id="results" class="col-sm-6">
+      <table>
+        <thead>
+          <tr>
+            <th>Variable</th>
+            <th>Condition</th>
+          </tr>
+        </thead>
 
-    <tbody>
-      <% @results.each do |result| %>
-      <tr>
-        <td ><%= result %></td>
-      </tr>
-      <% end %>
-    </tbody>
-  </table>
+        <tbody>
+          <% @results.each do |result| %>
+          <tr>
+            <td ><a class="resultado" id="<%= result %>" href=""><%= result %></a></td>
+          </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+    <div id="paths" class="col-sm-6">
+    </div>
+  </div>
 </div>
 
 <br>

@@ -33,6 +33,28 @@ class Node < ActiveRecord::Base
         return array_node
     end
 
+    def path_for_result(result)
+        paths = Array.new()
+        nodes = self.class.where(result: result)
+        nodes.each { |node|
+            a = Array.new()
+            node.path.each { |node|
+                a << OpenStruct.new({variable: node.variable,condition: node.condition})
+            }
+            a = self.path_for_result_to_text a
+            paths << a
+        }
+        return paths
+    end
+
+    def path_for_result_to_text(paths)
+        text = ''
+        paths.each_with_index do |node, index|
+          text << "#{index}º - #{node.variable} #{node.condition}\r\n"
+        end
+        return text
+    end
+
     def extract_tree(file,start_search,end_search,variaveis,tree_id)
         nome_no = ''
         tree = Array.new
