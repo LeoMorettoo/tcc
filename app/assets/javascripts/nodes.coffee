@@ -13,6 +13,25 @@ ready = ->
             # $('body').append "AJAX Error: #{textStatus}"
             # deu ruim, tratar erro
         success: (data, textStatus, jqXHR) ->
+          results = ''
+          $('.ac-text').remove()
+          $.each data, (index,resultado) ->
+            index = index + 1
+            results = results +
+              '
+              <div class="ac-sub">
+              <input class="ac-input" id="ac-' + index + '" name="ac-' + index + '" type="checkbox" />
+              <label class="ac-label" for="ac-' + index + '">Forma ' + index + ' </label>
+              <article class="ac-sub-text">
+              ' + resultado + '
+              </article>
+              </div>
+              '
+          $divResultado =
+            '<article class="ac-text">
+            ' + results +  '
+             </article><!--/ac-text--> '
+          $('.ac').append($divResultado)
 
 
   $filters = $(".node-value-selector")

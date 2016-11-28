@@ -50,7 +50,7 @@ class Node < ActiveRecord::Base
     def path_for_result_to_text(paths)
         text = ''
         paths.each_with_index do |node, index|
-          text << "#{index}º - #{node.variable} #{node.condition}\r\n"
+          text << "<p>#{index + 1}º - #{node.variable} #{node.condition}</p>"
         end
         return text
     end

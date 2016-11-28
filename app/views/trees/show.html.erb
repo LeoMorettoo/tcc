@@ -1,27 +1,37 @@
-<p>
-  <strong>Usuario:</strong>
-  <%= @tree.user.name %>
-</p>
+<div class="col-sm-12">
 
-<p>
-  <strong>Nome:</strong>
-  <%= @tree.name %>
-</p>
+  <div class="row">
+    <div class="col-sm-6">
+      <p>
+        <i class="fa fa-user-o" aria-hidden="true"></i>
+        <strong>Usuario:</strong>
+        <%= @tree.user.email %>
+      </p>
 
-<p>
-  <strong>Numero de instacias:</strong>
-  <%= @tree.leaf_number %>
-</p>
+      <p>
+        <strong>Nome:</strong>
+        <%= @tree.name %>
+      </p>
 
-<p>
-  <strong>Numero de variaveis:</strong>
-  <%= @tree.variable_numbers %>
-</p>
+      <p>
+        <strong>Numero de instacias:</strong>
+        <%= @tree.leaf_number %>
+      </p>
+    </div>
 
-<p>
-  <strong>Tamanho da arvore:</strong>
-  <%= @tree.tree_size %>
-</p>
+    <div class="col-sm-6">
+      <p>
+        <strong>Numero de variaveis:</strong>
+        <%= @tree.variable_numbers %>
+      </p>
 
-<%= link_to 'Editar', edit_tree_path(@tree) %> |
-<%= link_to 'Voltar', trees_path %>
+      <p>
+        <strong>Tamanho da arvore:</strong>
+        <%= @tree.tree_size %>
+      </p>
+    </div>
+  </div>
+
+<%= link_to 'Voltar', trees_path, class: 'btn btn-warning btn-lg btn-full-width pull-right' %>
+
+</div>

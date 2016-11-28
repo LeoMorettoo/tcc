@@ -1,33 +1,44 @@
 <p id="notice"><%= notice %></p>
+<div class="col-sm-12">
+  <h1>Listing Nodes</h1>
+  <div class="container-fluid">
+    <ul class="nav nav-tabs">
+      <li><a href="/cenario/<%= @id %>">Algoritimo 1</a></li>
+      <li class="active"><a href="#">algoritimo 2</a></li>
+    </ul>
 
-<h1>Listing Nodes</h1>
-<div class="container-fluid">
-  <ul class="nav nav-tabs">
-    <li><a href="/cenario/<%= @id %>">Algoritimo 1</a></li>
-    <li class="active"><a href="#">algoritimo 2</a></li>
-  </ul>
-  <div class="row">
-    <div id="results" class="col-sm-6">
-      <table>
-        <thead>
-          <tr>
-            <th>Variable</th>
-            <th>Condition</th>
-          </tr>
-        </thead>
+    <div class="row">
+      <div id="results" class="col-sm-6">
+        <table>
+          <thead>
+            <tr>
+              <th>Variable</th>
+              <th>Condition</th>
+            </tr>
+          </thead>
 
-        <tbody>
-          <% @results.each do |result| %>
-          <tr>
-            <td ><a class="resultado" id="<%= result %>" href=""><%= result %></a></td>
-          </tr>
-          <% end %>
-        </tbody>
-      </table>
-    </div>
-    <div id="paths" class="col-sm-6">
+          <tbody>
+            <% @results.each do |result| %>
+            <tr>
+              <td ><a class="resultado" id="<%= result %>" href=""><%= result %></a></td>
+            </tr>
+            <% end %>
+          </tbody>
+        </table>
+      </div>
+      <div id="paths" class="col-sm-6">
+        <section class="acordeon-result">
+
+          <div class="ac">
+
+            <input class="ac-input" id="ac-0" name="ac-0" type="checkbox" checked="checked" />
+            <label class="ac-label" for="ac-0">Resultados</label>
+
+          </div><!--/ac-->
+
+        </section>
+      </div>
     </div>
   </div>
 </div>
 
-<br>
