@@ -1,35 +1,43 @@
 <p id="notice"><%= notice %></p>
+<div class="col-sm-12">
+  <h1>Listing Nodes</h1>
+  <div class="container-fluid">
+    <ul class="nav nav-tabs">
+      <li class="active"><a href="#">Algoritimo 1</a></li>
+      <li><a href="/cenario_resultado/<%= @id %>">algoritimo 2</a></li>
+    </ul>
 
-<h1>Listing Nodes</h1>
+    <div class="row">
+      <div class="col-sm-8">
+        <div class="row mg-t-20">
+          <div class="col-sm-4">
+            <strong>Variable</strong>
+          </div>
+          <div class="col-sm-8">
+            <strong>Condition</strong>
+          </div>
+        </div>
 
-<table>
-  <thead>
-    <tr>
-      <th>Tree</th>
-      <th>Variable</th>
-      <th>Condition</th>
-      <th>Result</th>
-      <th>Level</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
+        <div class="row mg-t-10">
+          <div class="col-sm-12">
+            <% @nodes.each do |key,value| %>
+              <div class="row mg-b-15">
+                <div class="col-sm-4">
+                  <%= key.to_s.humanize %>
+                  </div>
+                <div class="col-sm-8">
+                  <%= select_tag key, options_from_collection_for_select(value,"name","name"), {prompt: "Selecione uma opção" ,class: 'node-value-selector form-control'}  %>
+                </div>
+              </div>
+            <% end %>
+          </div>
+        </div>
+      </div>
 
-  <tbody>
-    <% @nodes.each do |node| %>
-      <tr>
-        <td><%= node.tree %></td>
-        <td><%= node.variable %></td>
-        <td><%= node.condition %></td>
-        <td><%= node.result %></td>
-        <td><%= node.level %></td>
-        <td><%= link_to 'Show', node %></td>
-        <td><%= link_to 'Edit', edit_node_path(node) %></td>
-        <td><%= link_to 'Destroy', node, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
+      <div class="col-sm-4">
+        <h2>oi eu sou o leo</h2>
+      </div>
+    </div>
 
-<br>
-
-<%= link_to 'New Node', new_node_path %>
+  </div>
+</div>

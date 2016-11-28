@@ -1,6 +1,6 @@
 source 'https://rubygems.org'
 
-
+ruby '2.3.0p0'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.2.5.1'
 # Use postgresql as the database for Active Record
@@ -26,6 +26,14 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 # create a bundle of methods to help create self-relation structures
 gem 'ancestry'
 
+#compass
+gem 'compass-rails'
+
+# bostrap do inferno
+gem 'bootstrap-sass'
+
+#devise for authentication
+gem 'devise', '~> 4.2'
 
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
@@ -49,3 +57,6 @@ group :development do
   gem 'spring'
 end
 
+group :production do
+  gem 'rails_12factor'
+end
