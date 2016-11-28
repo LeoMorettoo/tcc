@@ -1,10 +1,11 @@
 class TreesController < ApplicationController
 	before_action :set_tree, only: [:show, :edit, :update, :destroy]
+	before_action :authenticate_user!
 
   # GET /trees
   # GET /trees.json
   def index
-  	@trees = Tree.all
+  	@trees = Tree.where(user_id: current_user)
   end
 
   # GET /trees/1
@@ -14,7 +15,7 @@ class TreesController < ApplicationController
 
   # GET /trees/new
   def new
-  	@tree = Tree.new
+  	@tree = current_user.trees.build
   end
 
   # GET /trees/1/edit
@@ -24,18 +25,18 @@ class TreesController < ApplicationController
   # POST /trees
   # POST /trees.json
   def create
-  	@tree = Tree.new(tree_params)
+  	@tree = current_user.trees.build(tree_params)
   	upload
   	@tree.created_at = Time.now
   	@tree.name = @tree.file.original_filename
   	respond_to do |format|
-  		if @tree.save  			
+  		if @tree.save
 		  	nodes = Node.new
  	 		variaveis = nodes.extract_variables(@nome_arquivo,@numero_da_linha[:numero_de_variaveis]+1,@numero_da_linha[:test_mode]-1)
  	 		nodes.extract_tree(@nome_arquivo,@numero_da_linha[:classifier_model]+5,@numero_da_linha[:numero_de_folhas]-2,variaveis,@tree.id)
 			### adicionar a migracao que tira o autoincremt da buceta da tabela de nodes
-			### adicionar um numero prefixo que não vá dar problema e resa muleke 
-			i= 0 
+			### adicionar um numero prefixo que não vá dar problema e resa muleke
+			i= 0
   			format.html { redirect_to @tree, notice: 'Arquivo Adicionado com sucesso.' }
   			format.json { render :show, status: :created, location: @tree }
   		else
@@ -98,16 +99,16 @@ end
 			@tree.instances_numbers = line[teste_tamanho_variavel ..-1].strip.to_i
 			@variaveis_status[:intancias] = 1
 			@numero_da_linha[:instancias] = @linha
-		end 
+		end
 	end
 
-	def get_numero_de_variaveis(line)  
+	def get_numero_de_variaveis(line)
 		if !line.index(@variaveis_de_text[:numero_de_variaveis]).nil?
 			teste_tamanho_variavel = @variaveis_de_text[:numero_de_variaveis].length
-			@tree.variable_numbers = line[teste_tamanho_variavel ..-1].strip.to_i 
+			@tree.variable_numbers = line[teste_tamanho_variavel ..-1].strip.to_i
 			@variaveis_status[:numero_de_variaveis] = 1
 			@numero_da_linha[:numero_de_variaveis] = @linha
-		end 
+		end
 	end
 
 	def get_numero_de_folhas(line)
@@ -122,8 +123,8 @@ end
 
 
 	def get_tamanho_da_arvore(line)
-		if !line.index(@variaveis_de_text[:tamanho_da_arvore]).nil? 
-			teste_tamanho_variavel = @variaveis_de_text[:tamanho_da_arvore].length  
+		if !line.index(@variaveis_de_text[:tamanho_da_arvore]).nil?
+			teste_tamanho_variavel = @variaveis_de_text[:tamanho_da_arvore].length
 			@tree.tree_size = line[teste_tamanho_variavel ..-1].strip.to_i
 			@status_tamanho_da_arvore = 1
 			@variaveis_status[:tamanho_da_arvore] = 1
@@ -132,8 +133,8 @@ end
 	end
 
 	def get_test_mode(line)
-		if !line.index(@variaveis_de_text[:test_mode]).nil? 
-			teste_tamanho_variavel = @variaveis_de_text[:test_mode].length  
+		if !line.index(@variaveis_de_text[:test_mode]).nil?
+			teste_tamanho_variavel = @variaveis_de_text[:test_mode].length
 			@tamanho_da_arvore = line[teste_tamanho_variavel ..-1].strip.to_i
 			@status_test_mode = 1
 			@variaveis_status[:test_mode] = 1
@@ -142,8 +143,8 @@ end
 	end
 
 	def get_classifier_model(line)
-		if !line.index(@variaveis_de_text[:classifier_model]).nil?  
-			teste_tamanho_variavel = @variaveis_de_text[:classifier_model].length 
+		if !line.index(@variaveis_de_text[:classifier_model]).nil?
+			teste_tamanho_variavel = @variaveis_de_text[:classifier_model].length
 			@tamanho_da_arvore = line[teste_tamanho_variavel ..-1].strip.to_i
 			@status_classifier_model = 1
 			@variaveis_status[:classifier_model] = 1
@@ -155,7 +156,7 @@ end
 		File.foreach( nome_arquivo ) do |line|
 			if @variaveis_status[:intancias] == 0
 				get_instancias(line.to_str)
-			end 
+			end
 
 			if @variaveis_status[:numero_de_folhas] == 0
 				get_numero_de_folhas(line.to_str)
@@ -167,15 +168,15 @@ end
 
 			if @variaveis_status[:numero_de_variaveis] == 0
 				get_numero_de_variaveis(line.to_str)
-			end   
+			end
 
 			if @variaveis_status[:test_mode] == 0
 				get_test_mode(line.to_str)
-			end 
+			end
 
 			if @variaveis_status[:classifier_model] == 0
 				get_classifier_model(line.to_str)
-			end 
+			end
 			@linha += 1
 		end
 	end

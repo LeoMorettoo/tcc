@@ -1,0 +1,102 @@
+.btn-full-width {
+	width: 100%
+}
+
+
+/*------------------------------------*\
+	#RESETS
+\*------------------------------------*/
+//#BORDER
+.no-bd{
+	border: none !important;
+	&-l{
+		border-left: none !important;
+	}
+	&-r{
+		border-right: none !important;
+	}
+	&-t{
+		border-top: none !important;
+	}
+	&-b{
+		border-bottom: none !important;
+	}
+}
+
+//#MARGIN
+.no-mg{
+	margin: 0 !important;
+	&-l{
+		margin-left: 0 !important;
+	}
+	&-r{
+		margin-right: 0 !important;
+	}
+	&-t{
+		margin-top: 0 !important;
+	}
+	&-b{
+		margin-bottom: 0 !important;
+	}
+}
+
+$i: 0;
+@while $i <= 200 {
+	.mg{
+		&-#{$i} {
+			margin: #{$i}px !important;
+		}
+		&-l-#{$i} {
+			margin-left: #{$i}px !important;
+		}
+		&-r-#{$i} {
+			margin-right: #{$i}px !important;
+		}
+		&-t-#{$i} {
+			margin-top: #{$i}px !important;
+		}
+		&-b-#{$i} {
+			margin-bottom: #{$i}px !important;
+		}
+	}
+	$i: $i + 5;
+}
+
+//#PADDING
+.no-pd{
+	padding: 0 !important;
+	&-l{
+		padding-left: 0 !important;
+	}
+	&-r{
+		padding-right: 0 !important;
+	}
+	&-t{
+		padding-top: 0 !important;
+	}
+	&-b{
+		padding-bottom: 0 !important;
+	}
+}
+
+$i: 0;
+@while $i <= 200 {
+	.pd{
+		&-#{$i} {
+			padding: #{$i}px !important;
+		}
+		&-l-#{$i} {
+			padding-left: #{$i}px !important;
+		}
+		&-r-#{$i} {
+			padding-right: #{$i}px !important;
+		}
+		&-t-#{$i} {
+			padding-top: #{$i}px !important;
+		}
+		&-b-#{$i} {
+			padding-bottom: #{$i}px !important;
+		}
+	}
+	$i: $i + 5;
+}

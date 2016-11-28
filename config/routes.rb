@@ -1,8 +1,8 @@
 Rails.application.routes.draw do
 
+  devise_for :users
   root 'trees#index'
   resources :trees
-  resources :users
   get '/cenario/:tree_id', to: 'nodes#cenario'
   post '/conditions_sub_trees', to: 'nodes#conditions_sub_trees'
   get '/cenario_resultado/:tree_id', to: 'nodes#cenario_resultado'
