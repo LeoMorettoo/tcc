@@ -21,7 +21,7 @@ ready = ->
               '
               <div class="ac-sub">
               <input class="ac-input" id="ac-' + index + '" name="ac-' + index + '" type="checkbox" />
-              <label class="ac-label" for="ac-' + index + '">Forma ' + index + ' </label>
+              <label class="ac-label" for="ac-' + index + '">Cenário ' + index + ' </label>
               <article class="ac-sub-text">
               ' + resultado + '
               </article>
