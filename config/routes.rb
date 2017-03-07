@@ -1,7 +1,13 @@
 Rails.application.routes.draw do
 
-  devise_for :users
   root 'trees#index'
+
+  devise_for :users
+
+  scope '/admin' do
+    resources :users
+  end
+
   resources :trees
   get '/cenario/:tree_id', to: 'nodes#cenario'
   post '/conditions_sub_trees', to: 'nodes#conditions_sub_trees'

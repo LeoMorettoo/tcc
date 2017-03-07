@@ -1,0 +1,41 @@
+<div class="col-sm-12">
+
+  <%= form_for(@user, html: { class: 'form-horizontal' }) do |f| %>
+    <% if @user.errors.any? %>
+      <div id="error_explanation">
+        <h2><%= pluralize(@user.errors.count, "error") %> Falha ao salvar o úsuario:</h2>
+
+        <ul>
+        <% @user.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+        </ul>
+      </div>
+    <% end %>
+
+
+    <div class="field">
+      <%= f.label :name %><br>
+      <%= f.text_field :name %>
+    </div>
+    <div class="field">
+      <%= f.label :email %><br>
+      <%= f.text_field :email %>
+    </div>
+    <div class="field">
+      <%= f.label :cpf %><br>
+      <%= f.text_field :cpf %>
+    </div>
+    <div class="field">
+      <%= f.label :password %><br>
+      <%= f.password_field :password %>
+    </div>
+    <div class="col-sm-2">
+      <div class="actions form-group">
+        <%= f.submit class: 'btn btn-primary btn-lg btn-full-width pull-right', value: 'Enviar'%>
+      </div>
+    </div>
+
+  <% end %>
+
+</div>
