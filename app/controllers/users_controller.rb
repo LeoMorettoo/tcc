@@ -2,12 +2,21 @@ class UsersController < ApplicationController
   before_filter :authenticate_user!, :except => [:show]
   #load_and_authorize_resource
 
+  def permissao
+    if !current_user.is_admin?
+      flash[:notice] = 'Acesso negado'
+      redirect_to trees_path
+    end
+  end
+
   def index
-    @users = User.all
+      permissao
+      @users = User.all
   end
 
   # GET /trees/new
   def new
+    permissao
     @user = User.new
   end
 
@@ -17,6 +26,7 @@ class UsersController < ApplicationController
   end
 
   def create
+    permissao
     @user = User.new (user_params)
     respond_to do |format|
       if @user.save
@@ -32,6 +42,7 @@ class UsersController < ApplicationController
   # PATCH/PUT /trees/1
   # PATCH/PUT /trees/1.json
   def update
+    permissao
     set_user
     respond_to do |format|
       if @user.update(user_params)
@@ -47,6 +58,7 @@ class UsersController < ApplicationController
   # DELETE /trees/1
   # DELETE /trees/1.json
   def destroy
+    permissao
     set_user
     @user.destroy
     respond_to do |format|
