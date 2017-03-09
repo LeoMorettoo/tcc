@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
 
+  resources :scenarios
   devise_for :users
   root 'trees#index'
   resources :trees

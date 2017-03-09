@@ -26,6 +26,10 @@ class NodesController < ApplicationController
     render "cenario_resultado"
   end
 
+  #fazer um if caso o primeiro click seja o final precisa trazer o result e o id dele
+  #verificar o bug de nao funcionar caso seja um array de arrays
+  #colocar o campo text para o nome
+  #embelezar o show dos cenarios
   def conditions_sub_trees
     @nodes_sub_tree = Node.new
     @nodes_sub_tree = @nodes_sub_tree.get_conditions_sub_tree(params['variable'],params['condition'],params['tree_id_condition'])
