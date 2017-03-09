@@ -1,6 +1,6 @@
 class Node < ActiveRecord::Base
     belongs_to :tree
-    has_many :scenarios
+    has_many :scenarios,dependent: :destroy
     has_ancestry
 
 
@@ -80,6 +80,7 @@ class Node < ActiveRecord::Base
         id_pai = identity + '1'
         array =  IO.readlines(file)[start_search..end_search]
         array.each do |line|
+            line.delete! "'"
             node = self.class.new
             nivel = line.count('|')
             nome_no = variaveis.select { |variavel| line.include? variavel }
@@ -90,7 +91,7 @@ class Node < ActiveRecord::Base
             if !no_resultado.nil?
                 resultado = condicao[no_resultado + 1.. - 1]
                 resultado.strip!
-                no_resultado_numero = resultado.index('(')
+                no_resultado_numero = resultado.index(' ')
                 resultado_numero = resultado[no_resultado_numero .. -1]
                 resultado = resultado[0 .. no_resultado_numero -1]
                 resultado.strip!
