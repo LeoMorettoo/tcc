@@ -46,17 +46,17 @@ class TreesController < ApplicationController
   	end
   end
 
-##ler o arquivo de upload, salvar as metadatas da arvore.
-## passar o array gerado e trabalhar nele no biblioteca ancestry e salvar. foda-se
-def upload
-	set_up_instances_variable
-	uploaded_io = @tree.file
-	@nome_arquivo = Rails.root.join('public', 'uploads', uploaded_io.original_filename)
-	File.open(Rails.root.join('public', 'uploads', uploaded_io.original_filename), 'wb') do |file|
-		file.write(uploaded_io.read)
-	end
-	ler_texto @nome_arquivo
-end
+  ##ler o arquivo de upload, salvar as metadatas da arvore.
+  ## passar o array gerado e trabalhar nele no biblioteca ancestry e salvar. foda-se
+  def upload
+  	set_up_instances_variable
+  	uploaded_io = @tree.file
+  	@nome_arquivo = Rails.root.join('public', 'uploads', uploaded_io.original_filename)
+  	File.open(Rails.root.join('public', 'uploads', uploaded_io.original_filename), 'wb') do |file|
+  		file.write(uploaded_io.read)
+  	end
+  	ler_texto @nome_arquivo
+  end
 
   # PATCH/PUT /trees/1
   # PATCH/PUT /trees/1.json

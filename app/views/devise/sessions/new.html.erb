@@ -1,6 +1,6 @@
 <div class="col-sm-12">
 
-  <h2>Log in</h2>
+  <h2>Logar</h2>
 
   <div class="row">
     <div class="col-sm-6">
@@ -12,19 +12,19 @@
           </div>
 
           <div class="field mg-t-15">
-            <%= f.label :password %><br />
+            <%= f.label :password, 'Senha' %><br />
             <%= f.password_field :password, autocomplete: "off" %>
           </div>
 
           <% if devise_mapping.rememberable? -%>
             <div class="field mg-t-15">
               <%= f.check_box :remember_me %>
-              <%= f.label :remember_me %>
+              <%= f.label :remember_me , 'lembrar-se' %>
             </div>
           <% end -%>
 
           <div class="actions">
-            <%= f.submit "Log in", class: 'btn btn-primary' %>
+            <%= f.submit "logar", class: 'btn btn-primary btn-lg' %>
           </div>
       <% end %>
     </div>

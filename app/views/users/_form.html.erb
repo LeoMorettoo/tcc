@@ -1,0 +1,54 @@
+<div class="col-sm-12">
+  <div class="col-sm-6">
+  <%= form_for(@user, html: { class: 'form-vertical' }) do |f| %>
+    <% if @user.errors.any? %>
+      <div id="error_explanation">
+        <h2><%= pluralize(@user.errors.count, "error") %> Falha ao salvar o usuário:</h2>
+
+        <ul>
+        <% @user.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+        </ul>
+      </div>
+    <% end %>
+
+    <div class="form-group">
+      <div class="field">
+        <%= f.label :name %><br>
+        <%= f.text_field :name, class: 'form-control' %>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <div class="field">
+        <%= f.label :email %><br>
+        <%= f.text_field :email, class: 'form-control' %>
+      </div>
+    </div>
+    <div class="form-group">
+      <div class="field">
+        <%= f.label :cpf %><br>
+        <%= f.text_field :cpf, class: 'form-control' %>
+      </div>
+    </div>
+    <div class="form-group">
+      <div class="field">
+        <%= f.label :password %><br>
+        <%= f.password_field :password, class: 'form-control' %>
+      </div>
+    </div>
+    <div class="col-sm-12 ">
+    <div class="col-sm-6 pull-left">
+      <div class="actions form-group">
+          <%= f.submit class: 'btn btn-primary btn-lg btn-full-width pull-right', value: 'Enviar'%>
+      </div>
+    </div>
+      <div class="col-sm-6 pull-right">
+        <%= link_to 'Voltar', users_path, class: 'btn btn-warning btn-lg btn-full-width pull-right' %>
+      </div>
+    </div>
+  </div>
+  <% end %>
+
+</div>

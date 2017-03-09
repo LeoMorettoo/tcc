@@ -8,27 +8,31 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a class="navbar-brand" href="#">TCC</a>
+      <a class="navbar-brand mb-0" href="#">SECC</a>
     </div>
 
     <!-- Collect the nav links, forms, and other content for toggling -->
+
+    <% if !current_user.nil? %>
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <ul class="nav navbar-nav">
-        <li class="active"><%= link_to 'Minhas Arvores', trees_path %></li>
+        <li class="nav-item"><%= link_to 'Minhas Arvores', trees_path %></li>
+        <li class="nav-item"><%= link_to 'Meus Cenarios', scenarios_path %></li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
-        <li><a href="#">Link</a></li>
         <li class="dropdown">
-          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Dropdown <span class="caret"></span></a>
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Ações <span class="caret"></span></a>
           <ul class="dropdown-menu">
-            <li><a href="#">Action</a></li>
-            <li><a href="#">Another action</a></li>
-            <li><a href="#">Something else here</a></li>
+          <%if current_user.is_admin? %>
+            <li><a href="<%=users_path%>">Gerenciar usuários</a></li>
+          <%end%>
+            <li><a href="<%=edit_user_path(current_user)%>">Editar dados Cadastrados</a></li>
             <li role="separator" class="divider"></li>
             <li><%= link_to "Sign out", destroy_user_session_path, method: :delete %>﻿</li>
           </ul>
         </li>
       </ul>
     </div><!-- /.navbar-collapse -->
+    <%end%>
   </div><!-- /.container-fluid -->
 </nav>

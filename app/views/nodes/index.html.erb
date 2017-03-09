@@ -1,10 +1,10 @@
 <p id="notice"><%= notice %></p>
 <div class="col-sm-12">
-  <h1>Listing Nodes</h1>
+  <h1>Escolha o tipo de busca</h1>
   <div class="container-fluid">
     <ul class="nav nav-tabs">
-      <li class="active"><a href="#">Algoritimo 1</a></li>
-      <li><a href="/cenario_resultado/<%= @id %>">algoritimo 2</a></li>
+      <li class="active"><a href="#">Busca por atributos</a></li>
+      <li><a href="/cenario_resultado/<%= @id %>">Busca por produtividade</a></li>
     </ul>
 
     <div class="row">
@@ -24,9 +24,15 @@
               <div class="row mg-b-15">
                 <div class="col-sm-4">
                   <%= key.to_s.humanize %>
-                  </div>
+                </div>
                 <div class="col-sm-8">
-                  <%= select_tag key, options_from_collection_for_select(value,"name","name"), {prompt: "Selecione uma opção" ,class: 'node-value-selector form-control'}  %>
+                  <select name="<%=key%>" id="<%=key%>" class="node-value-selector form-control">
+                    <option value="" class="node-value-selector form-control">selecione uma opcao</option>
+                    <% value.each do |node|%>
+                      <option value="<%=node.name%>" data-result="<%=node.result%>" class="node-value-selector form-control" ><%=node.name%></option>
+                    <% end %>
+                    </option>
+                  </select>
                 </div>
               </div>
             <% end %>
@@ -35,8 +41,20 @@
       </div>
 
       <div class="col-sm-4">
-        <h2>oi eu sou o leo</h2>
+        <h2>Produtividade:</h2>
+          <div id="final_result">
+
+          </div>
+        <div class="col-sm-12">
+          <h2>Escolhas:</h2>
+          <div>
+            <ul id="escolhas">
+
+            </ul>
+          </div>
+        </div>
       </div>
+
     </div>
 
   </div>

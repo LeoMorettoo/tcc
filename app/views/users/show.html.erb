@@ -1,0 +1,36 @@
+  <div class="col-sm-12">
+    <div class="row">
+      <div class="col-sm-9">
+        <h1 class="mg-t-15 mg-b-10">Lista de Usuários</h1>
+      </div>
+    </div>
+  </div>
+
+  <div class="col-sm-12">
+    <table class="table table-hover table-bordered">
+      <thead class="thead-inverse">
+        <tr>
+          <th>Cod</th>
+          <th>Nome</th>
+          <th>Email</th>
+          <th>CPF</th>
+          <th>Cadastrado-em</th>
+          <th colspan="3" >Ações</th>
+        </tr>
+      </thead>
+
+      <tbody>
+        <% @trees.each do |tree| %>
+        <tr>
+          <th scope="row"><%= user.id %></th>
+          <td><%= user.name %></td>
+          <td><%= user.email %></td>
+          <td><%= user.cpf %></td>
+          <td><%= user.created_at %></td>
+          <td><%= link_to 'Mostrar', :controller => :user, :action => :show , :id => user.id %></td>
+          <td><%= link_to 'Deletar', tree, method: :delete, data: { confirm: 'Tem certeza? Todas as informaçoes serão perdidas' } %></td>
+        </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>

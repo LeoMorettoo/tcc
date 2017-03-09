@@ -1,5 +1,6 @@
 class Node < ActiveRecord::Base
     belongs_to :tree
+    has_many :scenarios,dependent: :destroy
     has_ancestry
 
 
@@ -11,7 +12,7 @@ class Node < ActiveRecord::Base
             if !variable.key? name
                 variable[name] =  Array.new()
             end
-            node_obj = OpenStruct.new({name: node.condition})
+            node_obj = OpenStruct.new({name: node.condition, result: (node.result == 'f') ? 0 : node.result})
             if !variable[name].detect {|node| node.name == node_obj.name}
                 variable[name] << node_obj
             end
@@ -34,17 +35,29 @@ class Node < ActiveRecord::Base
     end
 
     def path_for_result(result)
-        paths = Array.new()
+
         nodes = self.class.where(result: result)
+        paths = Array.new()
+        result = Hash.new()
         nodes.each { |node|
             a = Array.new()
             node.path.each { |node|
                 a << OpenStruct.new({variable: node.variable,condition: node.condition})
             }
-            a = self.path_for_result_to_text a
-            paths << a
+            text = self.path_for_result_to_text a
+            result = {id: node.id,text: text}
+            paths << result
         }
         return paths
+    end
+
+    def path_for_result_by_id(id)
+        node = self.class.find id
+        a = Array.new()
+        node.path.each { |node|
+            a << OpenStruct.new({variable: node.variable,condition: node.condition})
+        }
+        return a
     end
 
     def path_for_result_to_text(paths)
@@ -67,6 +80,7 @@ class Node < ActiveRecord::Base
         id_pai = identity + '1'
         array =  IO.readlines(file)[start_search..end_search]
         array.each do |line|
+            line.delete! "'"
             node = self.class.new
             nivel = line.count('|')
             nome_no = variaveis.select { |variavel| line.include? variavel }
@@ -77,7 +91,7 @@ class Node < ActiveRecord::Base
             if !no_resultado.nil?
                 resultado = condicao[no_resultado + 1.. - 1]
                 resultado.strip!
-                no_resultado_numero = resultado.index('(')
+                no_resultado_numero = resultado.index(' ')
                 resultado_numero = resultado[no_resultado_numero .. -1]
                 resultado = resultado[0 .. no_resultado_numero -1]
                 resultado.strip!
