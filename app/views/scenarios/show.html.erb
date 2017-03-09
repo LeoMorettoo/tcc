@@ -1,0 +1,9 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+	<% @path_for_result.each_with_index do |node, index| %>
+		<p><%="#{index + 1}º - #{node.variable} #{node.condition}"%></p>
+	<%end%>
+</p>
+
+<%= link_to 'voltar', scenarios_path ,:class => "btn btn-primary" %>

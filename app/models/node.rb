@@ -1,5 +1,6 @@
 class Node < ActiveRecord::Base
     belongs_to :tree
+    has_many :scenarios
     has_ancestry
 
 
@@ -11,7 +12,7 @@ class Node < ActiveRecord::Base
             if !variable.key? name
                 variable[name] =  Array.new()
             end
-            node_obj = OpenStruct.new({name: node.condition})
+            node_obj = OpenStruct.new({name: node.condition, result: (node.result == 'f') ? 0 : node.result})
             if !variable[name].detect {|node| node.name == node_obj.name}
                 variable[name] << node_obj
             end
@@ -34,17 +35,29 @@ class Node < ActiveRecord::Base
     end
 
     def path_for_result(result)
-        paths = Array.new()
+
         nodes = self.class.where(result: result)
+        paths = Array.new()
+        result = Hash.new()
         nodes.each { |node|
             a = Array.new()
             node.path.each { |node|
                 a << OpenStruct.new({variable: node.variable,condition: node.condition})
             }
-            a = self.path_for_result_to_text a
-            paths << a
+            text = self.path_for_result_to_text a
+            result = {id: node.id,text: text}
+            paths << result
         }
         return paths
+    end
+
+    def path_for_result_by_id(id)
+        node = self.class.find id
+        a = Array.new()
+        node.path.each { |node|
+            a << OpenStruct.new({variable: node.variable,condition: node.condition})
+        }
+        return a
     end
 
     def path_for_result_to_text(paths)
