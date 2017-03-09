@@ -34,6 +34,8 @@ gem 'bootstrap-sass'
 
 #devise for authentication
 gem 'devise', '~> 4.2'
+gem 'cancancan'
+gem 'rolify'
 
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
