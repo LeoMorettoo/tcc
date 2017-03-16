@@ -1,9 +1,16 @@
 <p id="notice"><%= notice %></p>
+<div class="col-sm-12">
+	<div class="col-sm-8">
+		<p>
+			<% @path_for_result.each_with_index do |node, index| %>
+				<p><%="#{index + 1}º - #{node.variable} #{node.condition}"%></p>
+			<%end%>
+		</p>
+	</div>
+	<div class="col-sm-4">
 
-<p>
-	<% @path_for_result.each_with_index do |node, index| %>
-		<p><%="#{index + 1}º - #{node.variable} #{node.condition}"%></p>
-	<%end%>
-</p>
+		<p>Resultado: <%=@result%></p>
+	</div>
+</div>
 
 <%= link_to 'voltar', scenarios_path ,:class => "btn btn-primary" %>

@@ -14,6 +14,7 @@ class ScenariosController < ApplicationController
     scenario = Scenario.find params[:id]
     node = Node.new
     @path_for_result = node.path_for_result_by_id(scenario.node_id)
+    @result = Node.find(scenario.node_id).result
   end
 
   # GET /scenarios/1/edit

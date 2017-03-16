@@ -6,7 +6,7 @@ class Node < ActiveRecord::Base
 
     def get_variables_conditions(tree_id)
         variable = {}
-        nodes = self.class.where(tree_id: tree_id)
+        nodes = self.class.where(tree_id: tree_id).order("variable ASC")
         nodes.each { |node|
             name = node.variable.to_sym
             if !variable.key? name
@@ -20,13 +20,9 @@ class Node < ActiveRecord::Base
         return variable
     end
 
-    def get_conditions_sub_tree(variable,condition,id)
+    def get_conditions_sub_tree(variable,condition,tree_id)
         array_node = Array.new
-        if id.to_i == 0
-            nodes = self.class.where(variable: variable, condition: condition)
-        else
-            nodes = self.class.where(id: id)
-        end
+        nodes = self.class.where(variable: variable, condition: condition, tree_id: tree_id)
 
         nodes.each do |node|
             array_node << node.descendants

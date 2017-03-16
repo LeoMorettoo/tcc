@@ -1,7 +1,7 @@
   <div class="col-sm-12">
     <div class="row">
       <div class="col-sm-9">
-        <h1 class="mg-t-15 mg-b-10">Lista de árvores</h1>
+        <h1 class="mg-t-15 mg-b-10">Lista de Árvores</h1>
       </div>
 
       <div class="col-sm-3">
@@ -17,10 +17,10 @@
           <th>Cod</th>
           <th>Usuario</th>
           <th>Nome da árvore</th>
+          <th>Número de variáveis</th>
           <th>Número de folhas</th>
-          <th>Número de variaveis</th>
           <th>Tamanho da árvore</th>
-          <th colspan="3" >Actions</th>
+          <th colspan="3" >Ações</th>
         </tr>
       </thead>
 
@@ -30,10 +30,10 @@
           <th scope="row"><%= tree.id %></th>
           <td><%= tree.user.email %></td>
           <td><%= tree.name %></td>
-          <td><%= tree.leaf_number %></td>
           <td><%= tree.variable_numbers %></td>
+          <td><%= tree.leaf_number %></td>
           <td><%= tree.tree_size %></td>
-          <td><%= link_to 'Mostrar', :controller => :nodes, :action => :cenario , :tree_id => tree.id %></td>
+          <td><%= link_to 'Visualizar', :controller => :nodes, :action => :cenario , :tree_id => tree.id %></td>
           <td><%= link_to 'Deletar', tree, method: :delete, data: { confirm: 'Tem certeza? Todas as informaçoes serão perdidas' } %></td>
         </tr>
         <% end %>
