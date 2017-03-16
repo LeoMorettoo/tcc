@@ -75,6 +75,7 @@ ready = ->
 
     #adiciona o result
     if final_result
+      $('#final_result').empty()
       $('#final_result').append('<p>' + final_result + '</p>')
       $('#final_result').append('<input type="text" placeholder="Titulo do Cenario" id="title_scenario">')
       $('#final_result').append('<button type="button" id="salvar" data-id="' + itemid + '" class="btn btn-success">Salvar</button>')
