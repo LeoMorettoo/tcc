@@ -11,7 +11,7 @@ class NodesController < ApplicationController
   def cenario
     @id = params['tree_id']
     @nodes = Node.new
-    @nodes = @nodes.get_variables_conditions(params['tree_id'])
+    @nodes = @nodes.get_variables_conditions(@id)
     render "index"
   end
 
@@ -32,7 +32,7 @@ class NodesController < ApplicationController
   #embelezar o show dos cenarios
   def conditions_sub_trees
     @nodes_sub_tree = Node.new
-    @nodes_sub_tree = @nodes_sub_tree.get_conditions_sub_tree(params['variable'],params['condition'],params['tree_id_condition'])
+    @nodes_sub_tree = @nodes_sub_tree.get_conditions_sub_tree(params['variable'],params['condition'],params['tree_id'])
     respond_to do |format|
         if @nodes_sub_tree
             format.json { render :json => @nodes_sub_tree, :status => 200 }
