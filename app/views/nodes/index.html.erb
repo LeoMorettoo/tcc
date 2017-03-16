@@ -11,10 +11,10 @@
       <div class="col-sm-8">
         <div class="row mg-t-20">
           <div class="col-sm-4">
-            <strong>Variable</strong>
+            <strong>Variáveis</strong>
           </div>
           <div class="col-sm-8">
-            <strong>Condition</strong>
+            <strong>Condições</strong>
           </div>
         </div>
 
@@ -29,7 +29,7 @@
                   <select name="<%=key%>" id="<%=key%>" class="node-value-selector form-control">
                     <option value="" class="node-value-selector form-control">selecione uma opcao</option>
                     <% value.each do |node|%>
-                      <option value="<%=node.name%>" data-result="<%=node.result%>" class="node-value-selector form-control" ><%=node.name%></option>
+                      <option value="<%=node.name%>" data-result="<%=node.result%>" data-tree="<%=@id%>" class="node-value-selector form-control" ><%=node.name%></option>
                     <% end %>
                     </option>
                   </select>

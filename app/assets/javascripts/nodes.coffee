@@ -64,6 +64,7 @@ ready = ->
     variable = $(this).attr('id')
     condition = $(this).val()
     final_result = $(this).find(':selected').data('result')
+    tree_id = $(this).find(':selected').data('tree')
     itemid = $(this).find(':selected').data('itemid')
 
     #adiciona a li
@@ -87,7 +88,7 @@ ready = ->
     $.ajax '/conditions_sub_trees',
         type: 'POST'
         dataType: 'json'
-        data: {variable:variable, condition:condition, tree_id_conditio:data_id}
+        data: {variable:variable, condition:condition, tree_id:tree_id}
         error: (jqXHR, textStatus, errorThrown) ->
             # $('body').append "AJAX Error: #{textStatus}"
             # deu ruim, tratar erro
@@ -116,7 +117,7 @@ ready = ->
                 $select.append('<option data-itemid="'+option.id+'" data-result="'+option.result+'" value="' + option.condition + '">' + option.condition + '</option>')
 
               text = if selects[select].length > 0 then 'Selecione uma' else 'Nenhuma'
-              $select.prepend('<option value="">' + text + ' opção</option>')
+              $select.prepend('<option selected value="">' + text + ' opção</option>')
 
 
 $(document).ready(ready)
