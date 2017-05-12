@@ -34,7 +34,7 @@
           <td><%= user.created_at %></td>
 
           <td><%= link_to 'Editar', :controller => :users, :action => :edit , :id => user.id %></td>
-          <td><%= link_to 'Deletar',  user,  method: :delete, data: { confirm: 'tem certeza??' } %></td>
+          <td><%= link_to 'Excluir',  user,  method: :delete, data: { confirm: 'tem certeza??' } %></td>
         </tr>
         <% end %>
       </tbody>

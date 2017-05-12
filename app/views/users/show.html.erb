@@ -28,7 +28,7 @@
           <td><%= user.cpf %></td>
           <td><%= user.created_at %></td>
           <td><%= link_to 'Mostrar', :controller => :user, :action => :show , :id => user.id %></td>
-          <td><%= link_to 'Deletar', tree, method: :delete, data: { confirm: 'Tem certeza? Todas as informaçoes serão perdidas' } %></td>
+          <td><%= link_to 'Excluir', tree, method: :delete, data: { confirm: 'Tem certeza? Todas as informaçoes serão perdidas' } %></td>
         </tr>
         <% end %>
       </tbody>

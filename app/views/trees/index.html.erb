@@ -5,7 +5,7 @@
       </div>
 
       <div class="col-sm-3">
-        <%= link_to 'Nova árvore', new_tree_path ,:class => "btn btn-primary btn-lg btn-full-width pull-right" %>
+        <%= link_to 'Nova Árvore', new_tree_path ,:class => "btn btn-primary btn-lg btn-full-width pull-right" %>
       </div>
     </div>
   </div>
@@ -34,7 +34,7 @@
           <td><%= tree.leaf_number %></td>
           <td><%= tree.tree_size %></td>
           <td><%= link_to 'Visualizar', :controller => :nodes, :action => :cenario , :tree_id => tree.id %></td>
-          <td><%= link_to 'Deletar', tree, method: :delete, data: { confirm: 'Tem certeza? Todas as informaçoes serão perdidas' } %></td>
+          <td><%= link_to 'Excluir', tree, method: :delete, data: { confirm: 'Tem certeza? Todas as informaçoes serão perdidas' } %></td>
         </tr>
         <% end %>
       </tbody>
